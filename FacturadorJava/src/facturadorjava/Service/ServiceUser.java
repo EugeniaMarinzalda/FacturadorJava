@@ -15,53 +15,51 @@ import java.util.Scanner;
  */
 public class ServiceUser {
     
-    public Scanner scan = new Scanner(System.in).useDelimiter("\n");
+    public static Scanner scan = new Scanner(System.in).useDelimiter("\n");
     
     public User createUser () {
         System.out.println("Ingrese el nombre de usuario");
         String name = scan.next();
         System.out.println("Ingrese la contraseña");
         String password = scan.next();
-        System.out.println("Nombre: " + name + "\nContraseña: " + password);
+        //System.out.println("Nombre: " + name + "\nContraseña: " + password); //para control de usuario
         return new User(name,password);
     }
-
     /*public static void createVector(User u){ 
         ArrayList <User> userList = new ArrayList <>(); 
         userList.add(u);
     }*/
-    public static void createVector(User us, int u){
-        User [] userVector = new User [u+1];
-        userVector[u]= us;
-        u++; // probar que arranque desde ese valor
-        
-    }
-
-    public boolean userValidation ( User[] userVector ){
-        
-        
+    public static void userValidation (User [] userVector ){
+        boolean flag = true;
+        do {
             System.out.println("Ingrese el nombre de usuario");
             String name = scan.next();
             for (int i = 0; i < userVector.length ; i++) {
-                if (name.equals(userVector[i].getName())) {
+                if (name.equalsIgnoreCase(userVector[i].getName())) {
                     System.out.println("Ingrese la contraseña");
                     String pas= scan.next();
-                    if (pas.equals(userVector[i].getPassword())) {
+                    if (pas.equalsIgnoreCase(userVector[i].getPassword())) {
                         System.out.println("Los datos son correctos");
-                        return true;
-                        
+                        flag = false;
+                        break;
+                        //return true;
                     } else {
-                        System.out.println("La contraseña es incorrecta.Intente nuevamente");
+                        System.out.println("La contraseña es incorrecta. Intente nuevamente");
                         break;
                     }
-                } else {
-                    System.out.println("Usuario invalido. Intente nuevamente");
-                    break;
-                }
+                } 
             }
-            return false;
-        }
+        } while (flag);   
+            
+    }
     
+    public void showVector(User [] userVector){
+        for (int i = 0; i < userVector.length; i++) {
+            if (userVector[i] != null) {
+                System.out.println("Usuario " + i + "- Nombre: " + userVector[i].getName() + " Contraseña: " + userVector[i].getPassword() );
+            }
+        }
+    }
 }
     
 

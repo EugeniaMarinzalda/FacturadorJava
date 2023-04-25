@@ -20,20 +20,29 @@ public class FacturadorJava {
      */
     public static void main(String[] args) {
         ServiceUser ss = new ServiceUser ();
-        User us = new User();
-        int u = 0;
+        //User us = new User();
+        int dim = 5; // para 5 usuarios - ver despues para que no sea fijo
+        int position = 0;
+        User[] userVector = new User[dim];
+        userVector[0]= new User("juan perez","123456");
+        userVector[1]= new User("maria lopez","987654");
+        position = 2;
         Scanner read = new Scanner(System.in);
         System.out.println("Bienvenido al Facturador");
         boolean flag = true;
         do {
-            System.out.println("Menu \n 1- Registrarse \n 2- Realizar una factura \n 3- Salir");
+            System.out.println("Menu \n 1- Registrarse \n 2- Realizar una factura \n 3- Salir \n 4- Mostrar Vector objeto");
             int opc = read.nextInt();
             switch (opc) {
                 case 1:
-                    ss.createVector(ss.createUser(),u); //genera el usuario y lo agrega al vector
+                    userVector[position]=ss.createUser();// en la posicion agrega el usuario
+                    position++;
                     break;
                 case 2:
-                    //ss.userValidation(userVector); // ver paramentros
+                    ServiceUser.userValidation(userVector);
+                    break;
+                case 4:  // modo prueba para analizar el vector
+                    ss.showVector(userVector);
                     break;
                 case 3:
                     System.out.println("Gracias por utilizar el servicio.");
@@ -44,6 +53,10 @@ public class FacturadorJava {
             }
         } while (flag);
         
+    }
+
+    private static User User(String maria_lopez, String string) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }
