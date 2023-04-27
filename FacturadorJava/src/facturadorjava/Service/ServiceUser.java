@@ -15,7 +15,8 @@ import java.util.Scanner;
  */
 public class ServiceUser {
     
-    public static Scanner scan = new Scanner(System.in).useDelimiter("\n");
+    private static Scanner scan = new Scanner(System.in).useDelimiter("\n");
+    public ArrayList <User> userList = new ArrayList <>();
     
     public User createUser () {
         System.out.println("Ingrese el nombre de usuario");
@@ -25,40 +26,48 @@ public class ServiceUser {
         //System.out.println("Nombre: " + name + "\nContraseña: " + password); //para control de usuario
         return new User(name,password);
     }
-    /*public static void createVector(User u){ 
-        ArrayList <User> userList = new ArrayList <>(); 
+    
+    public User createUserFab (String name,String password) {
+        String names = name;
+        String passwords = password;
+        return new User(names,passwords);
+    }
+
+    public void createList(User u){ 
         userList.add(u);
-    }*/
-    public static void userValidation (User [] userVector ){
+    }
+      
+    public void userValidation (){
+        int attempts = 3;
+        boolean proof = false;
         boolean flag = true;
         do {
             System.out.println("Ingrese el nombre de usuario");
             String name = scan.next();
-            for (int i = 0; i < userVector.length ; i++) {
-                if (name.equalsIgnoreCase(userVector[i].getName())) {
+            for (int i = 0; i < userList.size(); i++) {
+                if (userList.get(i).getName().equalsIgnoreCase(name)) {
                     System.out.println("Ingrese la contraseña");
                     String pas= scan.next();
-                    if (pas.equalsIgnoreCase(userVector[i].getPassword())) {
+                    proof=false;
+                    if (userList.get(i).getPassword().equalsIgnoreCase(pas)) {
                         System.out.println("Los datos son correctos");
                         flag = false;
                         break;
-                        //return true;
                     } else {
                         System.out.println("La contraseña es incorrecta. Intente nuevamente");
                         break;
                     }
-                } 
+                }  
             }
-        } while (flag);   
-            
+            if (proof) {
+                System.out.println("El usuario es incorrecto.");
+            }
+            attempts--;
+        } while (flag && attempts>=0);   
     }
     
-    public void showVector(User [] userVector){
-        for (int i = 0; i < userVector.length; i++) {
-            if (userVector[i] != null) {
-                System.out.println("Usuario " + i + "- Nombre: " + userVector[i].getName() + " Contraseña: " + userVector[i].getPassword() );
-            }
-        }
+    public void showList(){
+        System.out.println(userList);
     }
 }
     

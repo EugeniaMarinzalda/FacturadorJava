@@ -20,14 +20,11 @@ public class FacturadorJava {
      */
     public static void main(String[] args) {
         ServiceUser ss = new ServiceUser ();
-        //User us = new User();
-        int dim = 5; // para 5 usuarios - ver despues para que no sea fijo
-        int position = 0;
-        User[] userVector = new User[dim];
-        userVector[0]= new User("juan perez","123456");
-        userVector[1]= new User("maria lopez","987654");
-        position = 2;
+        ss.createList(ss.createUserFab("juan perez","123456"));//para comenzar con algun valor de prueba
+        ss.createList(ss.createUserFab("maria lopez","987654")); // para comenzar con algun valor de prueba
+        
         Scanner read = new Scanner(System.in);
+        
         System.out.println("Bienvenido al Facturador");
         boolean flag = true;
         do {
@@ -35,14 +32,13 @@ public class FacturadorJava {
             int opc = read.nextInt();
             switch (opc) {
                 case 1:
-                    userVector[position]=ss.createUser();// en la posicion agrega el usuario
-                    position++;
+                    ss.createList(ss.createUser()); //creo el usuario y lo agrego a la lista
                     break;
                 case 2:
-                    ServiceUser.userValidation(userVector);
+                    ss.userValidation();
                     break;
                 case 4:  // modo prueba para analizar el vector
-                    ss.showVector(userVector);
+                    ss.showList();
                     break;
                 case 3:
                     System.out.println("Gracias por utilizar el servicio.");
@@ -52,11 +48,5 @@ public class FacturadorJava {
                     System.out.println("Opcion Incorrecta. Intente Nuevamente");
             }
         } while (flag);
-        
-    }
-
-    private static User User(String maria_lopez, String string) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
+    } 
 }
