@@ -101,7 +101,7 @@ public class Receipt {
 
     @Override
     public String toString() {
-        return "Receipt{" + "salesPoint=" + salesPoint + ", typeOfReceipt=" + typeOfReceipt + ", dateReceipt=" + dateReceipt + ", concept=" + concept + ", condicionFiscalPurchaser=" + condicionFiscalPurchaser + ", cuitPurchaser=" + cuitPurchaser + ", namePurchaser=" + namePurchaser + ", conditionSale=" + conditionSale + '}';
+        return "\n Comprobante{" + "Punto de venta=" + salesPoint + ", Tipo de comprobante=" + typeOfReceipt + ", Fecha de emisión=" + dateReceipt.getDate()+"/"+ + (dateReceipt.getMonth()+1) +"/" + (dateReceipt.getYear()+1900) +", Concepto=" + concept + ", Condición Fiscal Comprador=" + condicionFiscalPurchaser + ", CUIT Comprador=" + cuitPurchaser + ", Nombre Comprador=" + namePurchaser + ", Condición de venta=" + conditionSale + '}';
     }
 
 }
