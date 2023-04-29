@@ -12,6 +12,7 @@ package facturadorjava.entidades;
 public class User {
     private String name;
     private String password;
+   
 
     public User() {
     }

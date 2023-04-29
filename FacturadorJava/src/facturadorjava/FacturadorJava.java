@@ -35,7 +35,10 @@ public class FacturadorJava {
                     ss.createList(ss.createUser()); //creo el usuario y lo agrego a la lista
                     break;
                 case 2:
-                    ss.userValidation();
+                    ;
+                    if (ss.userValidation()) {
+                        ss.createReceipt();
+                    }
                     break;
                 case 4:  // modo prueba para analizar el vector
                     ss.showList();
