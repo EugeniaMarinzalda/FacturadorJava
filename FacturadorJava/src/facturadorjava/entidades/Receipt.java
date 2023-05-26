@@ -1,30 +1,26 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package facturadorjava.entidades;
 
+import Enumeradores.Concept;
+import Enumeradores.ConditionFiscal;
+import Enumeradores.Condition_Sale;
+import Enumeradores.TypeOfReceipt;
 import java.util.Date;
 
-/**
- *
- * @author EUGE
- */
 public class Receipt {
     private int salesPoint;
-    private int typeOfReceipt;
+    private TypeOfReceipt typeOfReceipt;
     private Date dateReceipt;
-    private int concept;
-    private String condicionFiscalPurchaser;
+    private Concept concept;
+    private ConditionFiscal condicionFiscalPurchaser;
     private long cuitPurchaser;
     private String namePurchaser;
-    private int conditionSale;
+    private Condition_Sale conditionSale;
 
     public Receipt() {
     }
 
-    public Receipt(int salesPoint, int typeOfReceipt, Date dateReceipt, int concept, String condicionFiscalPurchaser, long cuitPurchaser, String namePurchaser, int conditionSale) {
+    public Receipt(int salesPoint, TypeOfReceipt typeOfReceipt, Date dateReceipt, Concept concept, ConditionFiscal condicionFiscalPurchaser, long cuitPurchaser, String namePurchaser, Condition_Sale conditionSale) {
         this.salesPoint = salesPoint;
         this.typeOfReceipt = typeOfReceipt;
         this.dateReceipt = dateReceipt;
@@ -43,11 +39,11 @@ public class Receipt {
         this.salesPoint = salesPoint;
     }
 
-    public int getTypeOfReceipt() {
+    public TypeOfReceipt getTypeOfReceipt() {
         return typeOfReceipt;
     }
 
-    public void setTypeOfReceipt(int typeOfReceipt) {
+    public void setTypeOfReceipt(TypeOfReceipt typeOfReceipt) {
         this.typeOfReceipt = typeOfReceipt;
     }
 
@@ -59,19 +55,19 @@ public class Receipt {
         this.dateReceipt = dateReceipt;
     }
 
-    public int getConcept() {
+    public Concept getConcept() {
         return concept;
     }
 
-    public void setConcept(int concept) {
+    public void setConcept(Concept concept) {
         this.concept = concept;
     }
 
-    public String getCondicionFiscalPurchaser() {
+    public ConditionFiscal getCondicionFiscalPurchaser() {
         return condicionFiscalPurchaser;
     }
 
-    public void setCondicionFiscalPurchaser(String condicionFiscalPurchaser) {
+    public void setCondicionFiscalPurchaser(ConditionFiscal condicionFiscalPurchaser) {
         this.condicionFiscalPurchaser = condicionFiscalPurchaser;
     }
 
@@ -91,17 +87,20 @@ public class Receipt {
         this.namePurchaser = namePurchaser;
     }
 
-    public int getConditionSale() {
+    public Condition_Sale getConditionSale() {
         return conditionSale;
     }
 
-    public void setConditionSale(int conditionSale) {
+    public void setConditionSale(Condition_Sale conditionSale) {
         this.conditionSale = conditionSale;
     }
 
+    
+
     @Override
     public String toString() {
-        return "\n Comprobante{" + "Punto de venta=" + salesPoint + ", Tipo de comprobante=" + typeOfReceipt + ", Fecha de emisión=" + dateReceipt.getDate()+"/"+ + (dateReceipt.getMonth()+1) +"/" + (dateReceipt.getYear()+1900) +", Concepto=" + concept + ", Condición Fiscal Comprador=" + condicionFiscalPurchaser + ", CUIT Comprador=" + cuitPurchaser + ", Nombre Comprador=" + namePurchaser + ", Condición de venta=" + conditionSale + '}';
+        
+        return "Comprobante{" + "Punto de venta=" + salesPoint + ", Tipo de comprobante=" + typeOfReceipt + ", Fecha de emisión=" + dateReceipt.getDate()+"/"+ + (dateReceipt.getMonth()+1) +"/" + (dateReceipt.getYear()+1900) +", Concepto=" + concept + ", Condición Fiscal Comprador=" + condicionFiscalPurchaser + ", CUIT Comprador=" + cuitPurchaser + ", Nombre Comprador=" + namePurchaser + ", Condición de venta=" + conditionSale+"\n";
     }
 
 }

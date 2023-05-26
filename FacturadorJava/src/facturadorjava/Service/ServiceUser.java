@@ -1,7 +1,6 @@
 
 package facturadorjava.Service;
 
-
 import facturadorjava.entidades.User;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -10,6 +9,7 @@ public class ServiceUser {
     
     private static Scanner scan = new Scanner(System.in).useDelimiter("\n");
     public ArrayList <User> userList = new ArrayList <>();
+    ServiceReceipt sr = new ServiceReceipt();
     
     public User createUser () {
         System.out.println("Ingrese el nombre de usuario");
@@ -17,6 +17,7 @@ public class ServiceUser {
         System.out.println("Ingrese la contraseña");
         String password = scan.next();
         //System.out.println("Nombre: " + name + "\nContraseña: " + password); //para control de usuario
+        System.out.println("Usuario creado satisfactoriamente. Intente ingresar");
         return new User(name,password);
     }
     
@@ -30,7 +31,7 @@ public class ServiceUser {
         userList.add(u);
     }
       
-    public boolean userValidation (){
+    public User userValidation (){
         int attempts = 3;
         boolean proof = true;
         boolean flag = true;
@@ -45,7 +46,7 @@ public class ServiceUser {
                     if (userList.get(i).getPassword().equalsIgnoreCase(pas)) {
                         System.out.println("Los datos son correctos");
                         flag = false;
-                        return true;
+                        return userList.get(i);
                     } else {
                         System.out.println("La contraseña es incorrecta. Intente nuevamente");
                         break;
@@ -58,11 +59,18 @@ public class ServiceUser {
             proof=true;
             attempts--;
         } while (flag && attempts>0); 
-        return false;
+        return userList.get(0);
     }
     
+    public void showList(User u){
+        System.out.println(u.getReceipts());
+    }       
+    
     public void showList(){
-        System.out.println(userList);
+        for (User aux : userList) {
+            System.out.println(aux.getName());
+            System.out.println(aux.getReceipts());
+        }
     }        
 }
     
