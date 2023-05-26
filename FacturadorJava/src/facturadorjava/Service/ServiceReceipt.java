@@ -60,7 +60,9 @@ public class ServiceReceipt {
         Condition_Sale[] conditions = Condition_Sale.values();
         Condition_Sale conditionSale = conditions[opc-1];
  
-        return new Receipt ( salesPoint,  typeOfReceipt,  dateReceipt,  concept,  condicionFiscalPurchaser,  cuitPurchaser,  namePurchaser,  conditionSale); 
+        System.out.println("Ingrese el importe");
+        double amount = scan.nextDouble();
+        return new Receipt ( salesPoint,  typeOfReceipt,  dateReceipt,  concept,  condicionFiscalPurchaser,  cuitPurchaser,  namePurchaser,  conditionSale, amount); 
     }
     
     public void createReceiptList(Receipt f, User u){ 

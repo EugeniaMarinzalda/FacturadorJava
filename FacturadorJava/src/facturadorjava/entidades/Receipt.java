@@ -16,11 +16,12 @@ public class Receipt {
     private long cuitPurchaser;
     private String namePurchaser;
     private Condition_Sale conditionSale;
+    private double amount;
 
     public Receipt() {
     }
 
-    public Receipt(int salesPoint, TypeOfReceipt typeOfReceipt, Date dateReceipt, Concept concept, ConditionFiscal condicionFiscalPurchaser, long cuitPurchaser, String namePurchaser, Condition_Sale conditionSale) {
+    public Receipt(int salesPoint, TypeOfReceipt typeOfReceipt, Date dateReceipt, Concept concept, ConditionFiscal condicionFiscalPurchaser, long cuitPurchaser, String namePurchaser, Condition_Sale conditionSale, double amount) {
         this.salesPoint = salesPoint;
         this.typeOfReceipt = typeOfReceipt;
         this.dateReceipt = dateReceipt;
@@ -29,6 +30,7 @@ public class Receipt {
         this.cuitPurchaser = cuitPurchaser;
         this.namePurchaser = namePurchaser;
         this.conditionSale = conditionSale;
+        this.amount = amount;
     }
 
     public int getSalesPoint() {
@@ -95,12 +97,20 @@ public class Receipt {
         this.conditionSale = conditionSale;
     }
 
+    public double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
     
 
     @Override
     public String toString() {
         
-        return "Comprobante{" + "Punto de venta=" + salesPoint + ", Tipo de comprobante=" + typeOfReceipt + ", Fecha de emisión=" + dateReceipt.getDate()+"/"+ + (dateReceipt.getMonth()+1) +"/" + (dateReceipt.getYear()+1900) +", Concepto=" + concept + ", Condición Fiscal Comprador=" + condicionFiscalPurchaser + ", CUIT Comprador=" + cuitPurchaser + ", Nombre Comprador=" + namePurchaser + ", Condición de venta=" + conditionSale+"\n";
+        return "Comprobante{" + "Punto de venta=" + salesPoint + ", Tipo de comprobante=" + typeOfReceipt + ", Fecha de emisión=" + dateReceipt.getDate()+"/"+ + (dateReceipt.getMonth()+1) +"/" + (dateReceipt.getYear()+1900) +", Concepto=" + concept + ", Condición Fiscal Comprador=" + condicionFiscalPurchaser + ", CUIT Comprador=" + cuitPurchaser + ", Nombre Comprador=" + namePurchaser + ", Condición de venta=" + conditionSale+", Importe="+ amount +"\n";
     }
 
 }

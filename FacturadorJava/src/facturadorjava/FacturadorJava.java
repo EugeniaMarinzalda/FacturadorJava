@@ -1,17 +1,11 @@
 
 package facturadorjava;
 
-import Enumeradores.Concept;
-import Enumeradores.ConditionFiscal;
-import Enumeradores.Condition_Sale;
-import Enumeradores.TypeOfReceipt;
 import facturadorjava.Service.ServiceReceipt;
 import facturadorjava.Service.ServiceUser;
 import facturadorjava.entidades.Receipt;
 import facturadorjava.entidades.User;
-import java.util.Date;
 import java.util.Scanner;
-
 
 public class FacturadorJava {
 
